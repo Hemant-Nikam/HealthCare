@@ -13,7 +13,7 @@ import java.util.Map;
 @Service
 public class GoogleAuthService {
 
-    @Value("${google.client.id}")
+    @Value("${spring.security.oauth2.client.registration.google.client-id}")
     private String googleClientId;
 
     public Map<String, String> verifyGoogleToken(String idTokenString) {
