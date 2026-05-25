@@ -15,7 +15,7 @@ export default defineConfig({
         changeOrigin: true,
       },
       '/ws': {
-        target: 'https://healthcare-backend-wxmi.onrender.com',
+        target: 'wss://healthcare-backend-wxmi.onrender.com',
         ws: true,
         changeOrigin: true,
       }

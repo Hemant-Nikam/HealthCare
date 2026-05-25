@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
+import { BASE_URL } from '../../services/api'
 import NotificationBell from './NotificationBell'
 
 const patientNav = [
@@ -134,7 +135,7 @@ export default function Layout({ children, title }) {
             <div className="flex items-center space-x-2">
               {user?.profilePicture && (
                 <img 
-                  src={(import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:8080') + user.profilePicture} 
+                  src={(BASE_URL.replace('/api', '') + user.profilePicture)} 
                   alt="Profile" 
                   className="w-8 h-8 rounded-full object-cover border border-gray-300" 
                 />

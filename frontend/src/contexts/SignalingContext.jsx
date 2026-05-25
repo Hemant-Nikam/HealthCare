@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useRef, useState, useEffect, useCallback } from 'react'
 import { useAuth } from '../hooks/useAuth'
+import { BASE_URL } from '../services/api'
 
 const SignalingContext = createContext(null)
 
@@ -27,8 +28,14 @@ export const SignalingProvider = ({ children }) => {
         wsRef.current.close()
       }
 
-      const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-      const wsUrl = `${protocol}//${window.location.host}/ws/signal`;
+      // Convert HTTP BASE_URL to WS URL
+      let wsUrl = BASE_URL.replace('http://', 'ws://').replace('https://', 'wss://')
+      // Remove trailing /api if present, and append /ws/signal
+      if (wsUrl.endsWith('/api')) {
+        wsUrl = wsUrl.substring(0, wsUrl.length - 4)
+      }
+      wsUrl = `${wsUrl}/ws/signal`
+      
       console.log('[Global Signaling] Connecting to:', wsUrl);
       const ws = new WebSocket(wsUrl);
       wsRef.current = ws;

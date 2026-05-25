@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { userAPI } from '../services/api'
 import { useAuth } from '../hooks/useAuth'
+import { userAPI, BASE_URL } from '../services/api'
 import { toast } from 'react-toastify'
 import Layout from '../components/common/Layout'
 
@@ -26,7 +26,7 @@ const ProfilePage = () => {
     try {
       const res = await userAPI.getProfile()
       setProfile(res.data)
-      setPreviewUrl(res.data.profilePicture ? (import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:8080') + res.data.profilePicture : '')
+      setPreviewUrl(res.data.profilePicture ? (BASE_URL.replace('/api', '') + res.data.profilePicture) : '')
     } catch (err) {
       toast.error('Failed to load profile')
     } finally {
@@ -139,7 +139,7 @@ const ProfilePage = () => {
                 <button className="btn btn-sm btn-primary" style={{ background: '#f59e0b', color: 'black', border: 'none' }} onClick={handlePictureUpload} disabled={saving}>
                   {saving ? 'Uploading...' : 'Save Picture'}
                 </button>
-                <button className="btn btn-sm btn-outline" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.4)' }} onClick={() => { setSelectedFile(null); setPreviewUrl(profile.profilePicture ? (import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:8080') + profile.profilePicture : '') }}>
+                <button className="btn btn-sm btn-outline" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.4)' }} onClick={() => { setSelectedFile(null); setPreviewUrl(profile.profilePicture ? (BASE_URL.replace('/api', '') + profile.profilePicture) : '') }}>
                   Cancel
                 </button>
               </div>
