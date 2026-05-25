@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import { useAuth } from '../hooks/useAuth'
 import { authAPI } from '../services/api'
 
-const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '259455226051-27ghtm52pfcms0frh710c9pipa7ikkvq.apps.googleusercontent.com'
 
 const SPECIALIZATIONS = [
   'General Medicine', 'Cardiology', 'Dermatology', 'Endocrinology', 'ENT (Otolaryngology)',

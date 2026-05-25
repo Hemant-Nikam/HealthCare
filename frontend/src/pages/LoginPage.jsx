@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useAuth } from '../hooks/useAuth'
 
-const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '259455226051-27ghtm52pfcms0frh710c9pipa7ikkvq.apps.googleusercontent.com'
 
 export default function LoginPage() {
   const [form, setForm] = useState({ email: '', password: '' })
