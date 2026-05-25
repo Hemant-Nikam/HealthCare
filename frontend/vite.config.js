@@ -11,11 +11,11 @@ export default defineConfig({
     host: '0.0.0.0',
     proxy: {
       '/api': {
-        target: 'http://localhost:8080',
+        target: 'https://healthcare-backend-wxmi.onrender.com',
         changeOrigin: true,
       },
       '/ws': {
-        target: 'http://localhost:8080',
+        target: 'https://healthcare-backend-wxmi.onrender.com',
         ws: true,
         changeOrigin: true,
       }
